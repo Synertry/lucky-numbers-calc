@@ -1,7 +1,3 @@
-<!DOCTYPE html>
-<html>
-<body>
-
 <?php
 #Variables preparation block
 
@@ -14,7 +10,7 @@ Variable can also be set to any other manually inputted number or other function
 $maxcount = mt_rand(25,500);
 
 #Debugger or rather step display. Activate with "1". Deactivate for clean solution.
-$sdisplay = "1";
+$sdisplay = "0";
 
 
 #$trange is the range of numbers to sieve for lucky numbers.
@@ -26,7 +22,7 @@ $snumstep = "0";
 $stepd = "0";
 
 #Step display, activate with above option
-if ($sdisplay == "1") echo "Generated target-range until $maxcount.<br>Following will be a basic step-to-step display which numbers are left on the array:<br><br>";
+if ($sdisplay == "1") echo "Generated target-range until $maxcount.\nFollowing will be a basic step-to-step display which numbers are left on the array:\n\n";
 
 #Main function
 do {
@@ -38,7 +34,7 @@ if ($elimstep == "1") $elimstep++;
 #Step display, $stepd is increased incrementally with each cycle and $elimnumstep.
 if ($sdisplay == "1") {
 	++$stepd;
-	echo "$stepd ) Eliminate every $elimstep. number:<br><br>";
+	echo "$stepd ) Eliminate every $elimstep. number:\n\n";
 }
 
 #Determine the first number to delete. In this case the n-th number defined with $elimstep.
@@ -62,22 +58,19 @@ $snumstep++;
 #Step display for easy readability, shows one integer per line, ends with subresult
 if ($sdisplay == "1") {
 	$slist=count($trange);
-    for ($x=0;$x<$slist;$x++) echo "$trange[$x]<br>";
-	echo "<br>Numbers not to be used in following cycles: ";
+    for ($x=0;$x<$slist;$x++) echo "$trange[$x]\n";
+	echo "\nNumbers not to be used in following cycles: ";
     foreach ($snums as $del => $value) echo $value . ", ";
-    echo "<br><br>";
+    echo "\n\n";
 }
-} while ($trange[$snumstep] <= count($trange));
+} while ($trange[$snumstep] < count($trange));
 #Main script ends here, when the size of the next $elimstep will be higher than the current count of array $trange
 
 #Solution display; as there 
-if ($sdisplay == "1") echo "Number of next n-th number to delete is higher than the remaining amount of numbers.<br><br><br>";
-echo "Lucky numbers until $maxcount are: <br>";
+if ($sdisplay == "1") echo "Number of next n-th number to delete is higher than the remaining amount of numbers.\n\n\n";
+echo "Lucky numbers until $maxcount are:\n";
 foreach ($trange as $key => $value) echo $value . ", ";
 
-echo "<br><br>Made by Synertry, https://github.com/Synertry/lucky-numbers-calc";
+echo "\n\n Made by Synertry, https://github.com/Synertry/lucky-numbers-calc";
 #Made by Synertry, https://github.com/Synertry/lucky-numbers-calc
 ?>
-
-</body>
-</html>
