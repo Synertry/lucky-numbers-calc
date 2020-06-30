@@ -24,45 +24,45 @@ $stepd = "0";
 #Step display, activate with above option
 if ($sdisplay == "1") echo "Generated target-range until $maxcount.\nFollowing will be a basic step-to-step display which numbers are left on the array:\n\n";
 
-#Main function
+#Main function, where the loop begins.
 do {
-#Variable of current sieving number, to determine every n-th number to remove. n = $elimstep here.
-$elimstep = $trange[$snumstep];
-#Because the first step differs from following cycles I had to include a if-statement.
-if ($elimstep == "1") $elimstep++;
+	#Variable of current sieving number, to determine every n-th number to remove. n = $elimstep here.
+	$elimstep = $trange[$snumstep];
+	#Because the first step differs from following cycles I had to include a if-statement.
+	if ($elimstep == "1") $elimstep++;
 
-#Step display, $stepd is increased incrementally with each cycle and $elimnumstep.
-if ($sdisplay == "1") {
-	++$stepd;
-	echo "$stepd ) Eliminate every $elimstep. number:\n\n";
-}
+	#Step display, $stepd is increased incrementally with each cycle and $elimnumstep.
+	if ($sdisplay == "1") {
+		++$stepd;
+		echo "$stepd ) Eliminate every $elimstep. number:\n\n";
+	}
 
-#Determine the first number to delete. In this case the n-th number defined with $elimstep.
-$indexpos = $elimstep;
+	#Determine the first number to delete. In this case the n-th number defined with $elimstep.
+	$indexpos = $elimstep;
 
-/*
-The core command:
-From first number to delete with $indexpos to the target number $maxcount, every n-th number defined with $elimnumstep, will be returned with their key as $del and then removed from the array $trange with unset.
-*/
-foreach (range(--$indexpos, $maxcount, $elimstep) as $del) unset($trange[$del]);
-#The result with replace the old $trange
-$trange = array_merge($trange);
+	/*
+	The core command:
+	From first number to delete with $indexpos to the target number $maxcount, every n-th number defined with $elimnumstep, will be returned with their key as $del and then removed from the array $trange with unset.
+	*/
+	foreach (range(--$indexpos, $maxcount, $elimstep) as $del) unset($trange[$del]);
+	#The result with replace the old $trange
+	$trange = array_merge($trange);
 
 
-#Adds the step-size-number eliminated with to the definite lucky numbers pool.
-array_push($snums, $trange[$snumstep]);
+	#Adds the step-size-number eliminated with to the definite lucky numbers pool.
+	array_push($snums, $trange[$snumstep]);
 
-#Variable for looping, to determine current iteration, almost like $stepd or stepnumber in normal english.
-$snumstep++;
+	#Variable for looping, to determine current iteration, almost like $stepd or stepnumber in normal english.
+	$snumstep++;
 
-#Step display for easy readability, shows one integer per line, ends with subresult
-if ($sdisplay == "1") {
-	$slist=count($trange);
-    for ($x=0;$x<$slist;$x++) echo "$trange[$x]\n";
-	echo "\nNumbers not to be used in following cycles: ";
-    foreach ($snums as $del => $value) echo $value . ", ";
-    echo "\n\n";
-}
+	#Step display for easy readability, shows one integer per line, ends with subresult
+	if ($sdisplay == "1") {
+		$slist=count($trange);
+	    for ($x=0;$x<$slist;$x++) echo "$trange[$x]\n";
+		echo "\nNumbers not to be used in following cycles: ";
+	    foreach ($snums as $del => $value) echo $value . ", ";
+	    echo "\n\n";
+	}
 } while ($trange[$snumstep] < count($trange));
 #Main script ends here, when the size of the next $elimstep will be higher than the current count of array $trange
 
