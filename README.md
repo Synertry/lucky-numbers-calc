@@ -1,4 +1,4 @@
-# lucky-number-calculator
+# Lucky number calculator
 Whole code is based on PHP.
 I may add additional languages.
 
