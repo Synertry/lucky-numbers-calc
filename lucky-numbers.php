@@ -1,5 +1,5 @@
 <?php
-#This code is pure PHP. There will be conflicts with linebreaks, because HTML uses <br> instead of \n.
+#This code is pure PHP. There will be conflicts with linebreaks, because HTML uses br instead of \n.
 #Variables preparation block
 
 /*
