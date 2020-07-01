@@ -3,8 +3,7 @@
 <body>
 
 <?php
-#This code is pure PHP. There will be conflicts with linebreaks, because HTML uses <br> instead of \n.
-#Variables preparation block
+#This is the demo code to try in https://www.w3schools.com/php/phptryit.asp?filename=tryphp_func_array
 
 /*
 Setting a random max number to sieve until it.
